@@ -7,10 +7,13 @@ const todoSlise = createSlice({
     addTodo: (state, action) => {
       state.items.push(action.payload);
     },
+    deleteTodo: (state, action) => {
+      state.items = state.items.filter(item => item.id !== action.payload)
+    }
   },
 });
 
 export const selectorTodo = state => state.todos.items;
 
-export const { addTodo } = todoSlise.actions;
+export const { addTodo, deleteTodo } = todoSlise.actions;
 export const todosReduser = todoSlise.reducer;
